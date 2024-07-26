@@ -3,7 +3,7 @@
 ## Note:
 
 This directory contains a copy of the Excel file that was created with the script
-from the previous chapter (03 Read SQL Database Create CSV and Convert to Excel)
+from the previous chapter (04 Read SQL Database Create CSV and Convert to Excel)
 except I added a Concatenate function to the last column (column 'K') that creates 
 an SQL query from the dummy database that was also used in the previous chapter. 
 Keep in mind that the SQL query I created is just an example and doesn't necessarily 
