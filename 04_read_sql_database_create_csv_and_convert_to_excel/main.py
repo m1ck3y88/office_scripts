@@ -2,7 +2,7 @@ import pandas as pd
 import psycopg2
 import csv
 
-"""
+'''
 This scripts connects to an example PostgreSQL database called 'dvdrental',
 pulls data from a table called 'customer', creates a csv file called 
 'customers.csv' then converts it to an Excel file called 'customers.xlsx'.
@@ -13,7 +13,7 @@ demonstrated in this script, you will have to delete the 'customers.csv' and
 and 'customers.xlsx' files before running this script. Make sure to update the
 credentials for the database connection to match whatever you set them to in your 
 local environment.
-"""
+'''
 
 def get_connection():
     """
@@ -22,26 +22,26 @@ def get_connection():
     """
     try:
         return psycopg2.connect(
-            database="dvdrental",
-            user="postgres",
-            password="password",
-            host="127.0.0.1",
+            database='dvdrental',
+            user='postgres',
+            password='password',
+            host='127.0.0.1',
             port=5432,
         )
     except:
         return False
 conn = get_connection()
 if conn:
-    print("Connection to the PostgreSQL established successfully.")
+    print('Connection to the PostgreSQL established successfully.')
 else:
-    print("Connection to the PostgreSQL encountered and error.")
+    print('Connection to the PostgreSQL encountered and error.')
 
 # get the connection object
 conn = get_connection()
 # create a cursor using the connection object
 curr = conn.cursor()
 # execute the sql query
-curr.execute("SELECT * FROM customer;")
+curr.execute('SELECT * FROM customer;')
 # fetch all the rows from the cursor
 data = curr.fetchall()
 # close connection
@@ -64,7 +64,7 @@ fields = [
 ]
 
 # name of csv file
-filename = "customers.csv"
+filename = 'customers.csv'
 
 # writing to csv file
 with open(filename, 'w') as csvfile:

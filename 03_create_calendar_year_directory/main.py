@@ -1,15 +1,14 @@
-from pprint import pprint as pp
 from pathlib import Path
 import os
 
-"""
+'''
 This script creates a calendar year directory based on the year given (stored in the 'year' variable).
 Below we will create a calendar year directory for the year 2020. I used this year as an example because
 it was the most recent leap year, and therefore provides the opportunity to test out the functionality of 
 the script to make sure it works as intended. Note that if you do not change the 'is_leap_year' variable 
 to 'False' for years that are not a leap year, then the script will still create 29 folders for the month 
 of February, and vice versa.
-"""
+'''
 
 # Set up directory structure variables
 
@@ -56,9 +55,9 @@ file_paths = root_dir.glob('**/*')
 # Logic for creating directories in special situations listed below
 
 '''
-November, April, June, and September are the months with 30 days, 
-February has 28 days (29 days in the leap year) and all the remaining 
-months have 31 days
+April, June, September and November are the months with 30 days, 
+February has 28 days (29 days in a leap year) and all the remaining 
+months have 31 days.
 '''
 
 for path in file_paths:

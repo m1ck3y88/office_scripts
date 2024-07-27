@@ -1,12 +1,12 @@
 import os
 
-"""
+'''
 This script formats and creates a list of named folders.
 They do not need to be in any particular order but
 are ordered here in this example only so that the
 operating system does not automatically order them 
 alphabetically. 
-"""
+'''
 folders = []
 titles = [
     'January 2024',
@@ -29,21 +29,21 @@ def add_title(title, _list):
     :param title: A string to append to an empty list.
     :param _list: An empty list that formatted strings are to be appended to.
     """
-    _list.append("_".join((title).split()))
+    _list.append('_'.join((title).split()))
 
 if len(titles) != 0:
     for i in range(len(titles)):
         add_title(titles[i], folders)
 else:
-    print("There are no titles to add to the folders list!")
+    print('There are no titles to add to the folders list!')
 
 print(folders)
 
 if len(folders) != 0:
     for i in range(len(folders)):
         if i < 9:
-            os.mkdir((f"0{str(i + 1)}_" + folders[i]).lower())
+            os.mkdir((f'0{str(i + 1)}_' + folders[i]).lower())
         else:
-            os.mkdir((f"{str(i + 1)}_" + folders[i]).lower())
+            os.mkdir((f'{str(i + 1)}_' + folders[i]).lower())
 else:
-    print("There are no folders available to create!")
+    print('There are no folders available to create!')
