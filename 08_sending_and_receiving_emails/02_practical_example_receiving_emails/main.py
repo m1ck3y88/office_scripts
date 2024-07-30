@@ -28,7 +28,7 @@ while True:
     host = 'imap.gmail.com'
     email = '<YOUR_EMAIL>'
     password = app_password.your_password_here
-    # Format date according to the documentation for imapblib module
+    # Format date according to the documentation for imaplib module
     formatted_date = dt.now().strftime('%d-%b-%Y')
     # This query will pull emails only for the current date
     query = f'ON {formatted_date}'
@@ -45,7 +45,7 @@ while True:
     todays_emails = len(data[0].split())
 
     if todays_emails == 1:
-        print('\n-----------------------------------\n')
+        print('\n-----------------------------------')
         print(f'You have received {todays_emails} email today.')
         print('-----------------------------------\n')
 
@@ -65,28 +65,28 @@ while True:
         result, email_data = M.fetch(email, '(RFC822)')
         raw_email = mail.message_from_bytes(email_data[0][1])
 
-        # Append data to an empty list with each line to write to the text
+        # Append data to an empty list with each string to write to the text
         # file as an item in a tuple. I've commented out the body of the
         # email to reduce verbosity, but if you want to include that data
         # then simply uncomment the code below.
         list_of_emails.append((
-            '-----------------------------\n',          # Line 1 (tup[0])
-            'From: ' + raw_email['From'] + '\n',        # Line 2 (tup[1])
-            'Subject: ' + raw_email['Subject'] + '\n',  # Line 3 (tup[2])
-            'Date: ' + raw_email['Date'] + '\n',        # Line 4 (tup[3])
-            # 'Body:\n'                                 # Line 5 (tup[4])
-            # str(raw_email.get_payload(decode = True)) # Line 6 (tup[5])
-            '-----------------------------\n'
+            '-----------------------------\n',          # Item 1 (tup[0])
+            'From: ' + raw_email['From'] + '\n',        # Item 2 (tup[1])
+            'Subject: ' + raw_email['Subject'] + '\n',  # Item 3 (tup[2])
+            'Date: ' + raw_email['Date'] + '\n',        # Item 4 (tup[3])
+            # 'Body:\n'                                 # Item 5 (tup[4]) -- not included in code below
+            # str(raw_email.get_payload(decode = True)) # Item 6 (tup[5]) -- not included in code below
+            '-----------------------------\n'           # Item 7 (tup[6])
         ))
 
-    with open(f'{dt.now().strftime("%b_%d[%Hh][%Mm][%Ss]_")}' + filename, 'a') as file:
+    with open(f'{dt.now().strftime("%b_%d[%Hh][%Mm][%Ss]_")}{filename}', 'a') as file:
         # Unpack tuple and write each item to text file
         for tup in list_of_emails:
-            file.write(tup[0]),  # Line 1
-            file.write(tup[1]),  # Line 2
-            file.write(tup[2]),  # Line 3
-            file.write(tup[3]),  # Line 4
-            file.write(tup[4]),  # Line 5
+            file.write(tup[0]),  # Item 1
+            file.write(tup[1]),  # Item 2
+            file.write(tup[2]),  # Item 3
+            file.write(tup[3]),  # Item 4
+            file.write(tup[4]),  # Item 5
 
     M.close()
     M.logout()
